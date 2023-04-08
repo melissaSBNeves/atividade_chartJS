@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Implementando ChartJS</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="./css/style-graficos.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <!--Header  -->
+  <div class="header">
+    <div class="container">
+
+      <div>
+        <img src="./img/logo.png" class="logo">
+        <img src="./img/text_logo.png" class="logo">
+      </div>
+
+      <div class="search-bar">
+        <input type="search" placeholder="Pesquisar">
+        <button type="submit">
+          <img src="./img/pesquisar.png" alt="">
+        </button>
+      </div>
+
+      <ul class="navbar">
+        <li><a href="">Dashboard</a></li>
+        <li><a href="">Bebidas</a></li>
+        <li><a href="">Locais</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Gráficos -->
+  <div class="sessao-1">
+
+    <div class="container">
+      <div class="titulo">
+        <h2>Dashboard</h2>
+      </div>
+
+      <div class="graficos">
+        <div class="card_grafico">
+          <h4>Gráfico 1</h4>
+          <canvas id="sensor_linha" class="vetor"></canvas>
+        </div>
+
+        <div class="card_grafico">
+          <h4>Gráfico 2</h4>
+          <canvas id="sensor_barra" class="vetor"></canvas>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="container">
+      <h4>©PumpDrink 2023</h4>
+    </div>
+  </div>
+
+</body>
+
+<script>
+  const sensorLinha = document.getElementById('sensor_linha');
+  const sensorBarra = document.getElementById('sensor_barra');
+
+  //Gráfico Linha Sensor
+  new Chart(sensorLinha, {
+    type: 'line', //Tipo
+    data: {
+      //Eixo x
+      labels: ['12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00'
+      ],
+
+      datasets: [
+        {
+          //Temperatura
+          label: 'Temperatura',
+          backgroundColor: 'red',
+          borderColor: 'red',
+          data: [30, 29, 28, 25, 22, 23],
+          borderWidth: 1
+        },
+        {
+
+          //Umidade
+          label: 'Umidade',
+          backgroundColor: 'blue',
+          borderColor: 'blue',
+          data: [80, 82, 80, 85, 80, 83],
+          borderWidth: 1
+        }
+
+
+      ]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: false
+        }
+      }
+    }
+  });
+
+
+  //Gráfico Barra - Sensor
+  new Chart(sensorBarra, {
+    type: 'bar', //Tipo
+    data: {
+      //Eixo x
+      labels: ['Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho'
+      ],
+
+      datasets: [
+        {
+          //Temperatura
+          label: 'Temperatura',
+          backgroundColor: 'red',
+          borderColor: 'red',
+          data: [22, 24, 27, 23, 20, 18],
+          borderWidth: 1
+        },
+        {
+
+          //Umidade
+          label: 'Umidade',
+          backgroundColor: 'blue',
+          borderColor: 'blue',
+          data: [90, 89, 93, 87, 88, 82],
+          borderWidth: 1
+        }
+
+
+      ]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: false
+        }
+      }
+    }
+  });
+
+</script>
+
+</html>
